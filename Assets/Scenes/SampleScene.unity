@@ -501,6 +501,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: {fileID: 1527561523}
   lifeBar: {fileID: 710907932}
+--- !u!1 &1028334433
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1028334434}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1028334434
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1028334433}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -0.091, y: 0.292, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1348929526}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!1 &1348929523
 GameObject:
   m_ObjectHideFlags: 0
@@ -602,10 +633,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1348929523}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.73, y: -1.63, z: 1}
+  m_LocalPosition: {x: -2.376, y: -1.719, z: 1}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1028334434}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -624,8 +656,10 @@ MonoBehaviour:
   range: 2
   speed: 0.15
   castle: {fileID: 1527561522}
+  spawnPoint: {fileID: 1028334434}
   anim: {fileID: 1348929524}
   rg2: {fileID: 1348929529}
+  projectile: {fileID: 144771336615413818, guid: e6a9e7b980ef21d4984cec7581df08cc, type: 3}
 --- !u!61 &1348929528
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -794,7 +828,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1527561519}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3e8cbcf284e2da418db49f012220750, type: 3}
+  m_Script: {fileID: 11500000, guid: ab02bf08604071748abeb2ed22d258df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
@@ -998,6 +1032,7 @@ GameObject:
   - component: {fileID: 1839443455}
   - component: {fileID: 1839443454}
   - component: {fileID: 1839443456}
+  - component: {fileID: 1839443457}
   m_Layer: 0
   m_Name: Enemy Close
   m_TagString: Untagged
@@ -1107,8 +1142,10 @@ MonoBehaviour:
   range: 0.5
   speed: 0.1
   castle: {fileID: 1527561522}
+  spawnPoint: {fileID: 0}
   anim: {fileID: 1839443451}
   rg2: {fileID: 1839443456}
+  projectile: {fileID: 0}
 --- !u!61 &1839443455
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1156,3 +1193,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1839443457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839443450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de57eac1f6f1a644b82b672882ec31fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 1527561523}
+  damage: 5

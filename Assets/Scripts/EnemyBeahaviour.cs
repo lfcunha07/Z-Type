@@ -7,16 +7,12 @@ public class EnemyBeahaviour : MonoBehaviour
     [SerializeField] private float range;
     [SerializeField] private float speed;
     [SerializeField] private Transform castle;
+    [SerializeField] private Transform spawnPoint;
     [SerializeField] private Animator anim;
     [SerializeField] private Rigidbody2D rg2;
+    [SerializeField] private GameObject projectile;
 
     private bool isColliding = false;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
@@ -40,5 +36,10 @@ public class EnemyBeahaviour : MonoBehaviour
         if(col.gameObject.tag == "Player"){
             isColliding = true;
         }
+    }
+
+    void Shoot()
+    {
+        Instantiate(projectile, transform.position, Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z-90f));
     }
 }
