@@ -16,7 +16,7 @@ public class SpawnBehaviour : MonoBehaviour
     void Update()
     {
         if(frequency != Mathf.Floor(Time.timeSinceLevelLoad/30)){
-            frequency += Mathf.Floor(Time.timeSinceLevelLoad/30);
+            frequency += 1f;
         }
         if(frequency >= 14f){
             frequency = 14f;
