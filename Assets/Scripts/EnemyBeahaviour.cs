@@ -6,18 +6,26 @@ public class EnemyBeahaviour : MonoBehaviour
 {
     [SerializeField] private float range;
     [SerializeField] private float speed;
-    [SerializeField] private Transform castle;
-    [SerializeField] private Transform spawnPoint;
     [SerializeField] private Animator anim;
     [SerializeField] private Rigidbody2D rg2;
     [SerializeField] private GameObject projectile;
 
     private bool isColliding = false;
+    private AudioSource audioSource;
+    private GameObject castle;
+    private Transform castleTransform;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+        castle = GameObject.FindGameObjectWithTag("Player");
+        castleTransform = castle.GetComponent<Transform>();
+    }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 relativePos = castle.position - transform.position;
+        Vector3 relativePos = castleTransform.position - transform.position;
         Vector3 desiredUp = new Vector3(relativePos.x, relativePos.y, relativePos.z) * Mathf.Sign(relativePos.z);
         rg2.velocity = relativePos*speed;
         
@@ -40,6 +48,7 @@ public class EnemyBeahaviour : MonoBehaviour
 
     void Shoot()
     {
-        Instantiate(projectile, transform.position, Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z-90f));
+        audioSource.Play();
+        Instantiate(projectile, transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z-90f));
     }
 }
